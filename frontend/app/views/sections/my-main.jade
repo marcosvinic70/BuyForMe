@@ -1,0 +1,37 @@
+nav.navbar.navbar-inverse.navbar-fixed-top(id='navbar')
+    .container-fluid
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(href, ng-show='Main.usuarioLogado')
+                    span Email: {{Main.usuarioLogado.email}}
+            li
+                a(href='/login', ng-show='Main.usuarioLogado', ng-click='Main.logout()')
+                    span Logout
+                    i.fa.fa-sign-out.fa-lg
+                a(href='/login', ng-hide='Main.usuarioLogado')
+                    span Login
+                    i.fa.fa-sign-in.fa-lg
+
+<!-- Sidebar -->
+div(id="sidebar-wrapper")
+    ul.sidebar-nav
+        li.sidebar-brand
+            a(href="")
+               img.logo(src="https://i1.wp.com/www.gt4w.com.br/wp-content/uploads/2015/10/logo-white.png?fit=496%2C121", alt="GT4W")
+        hr
+        li
+            a(href='/')
+                i.fa.fa-home.fa-fw(aria-hidden='true')
+                |   Home
+        li
+            a(ng-href="{{Main.rotas[Main.rota]}}", ng-click="Main.autentica('cadastrar')")
+                i.fa.fa-cart-plus.fa-fw(aria-hidden='true')
+                |   Cadastrar Produtos
+        li
+            a(ng-href="{{Main.rotas[Main.rota]}}", ng-click="Main.autentica('produtos')")
+                i.fa.fa-shopping-basket.fa-fw(aria-hidden='true')
+                |   Meus Produtos
+        li
+            a(ng-href="{{Main.rotas[Main.rota]}}", ng-click="Main.autentica('comentarios')")
+                i.fa.fa-comments.fa-fw(aria-hidden='true')
+                |   Todos Comentários

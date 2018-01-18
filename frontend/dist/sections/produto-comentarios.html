@@ -1,0 +1,47 @@
+
+<div id="wrapper">
+  <my-main></my-main>
+  <div id="page-content-wrapper" class="col-md-10 col-md-offset-2">
+    <div class="container-fluid">
+      <div id="row-produto" class="row">
+        <div id="produto-content" ng-controller="ProdutoGetController as ProdutoGet" class="col-md-10 col-md-offset-1">
+          <h1 class="text-center">Comentários</h1>
+          <hr/>
+          <div id="imagem-produto" class="col-md-6"><img ng-src="{{ProdutoGet.produto.imageUrl}}" class="img-responsive"/></div>
+          <div id="info-produto" class="col-md-6">
+            <h3 class="text-center">{{ProdutoGet.produto.nome}}</h3>
+            <p>Descrição: {{ProdutoGet.produtoe.descricao}}</p>
+            <p>Valor: {{ProdutoGet.produto.valor | currency}}</p>
+            <p>Usuário: {{ProdutoGet.produto.usuario}}</p>
+            <form name="form" ng-submit="ProdutoComentarios.postComentario(ProdutoComentarios.novoComentario)" novalidate="novalidate" class="form-group">
+              <textarea ng-model="ProdutoComentarios.novoComentario" name="comentario" placeholder="Novo comentário..." required="" ngMaxLenght="100" class="form-control"></textarea>
+              <button type="submit" ng-disabled="form.$invalid" ng-hide="form.$invalid &amp;&amp; form.$dirty" class="btn btn-primary pull-right">Enviar</button>
+            </form>
+            <div ng-hide="form.$pristine">
+              <div ng-show="form.comentario.$touched">
+                <uib-alert type="danger" ng-if="form.comentario.$error.required">Por favor, preencha o campo comentário!</uib-alert>
+                <uib-alert type="danger" ng-if="form.comentario.$error.maxlength">O comentário deve conter no máximo 100 letras!</uib-alert>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="card-comentario">
+          <div dir-paginate="comentario in ProdutoComentarios.comentariosProduto | itemsPerPage: 3" class="col-md-10 col-md-offset-1 card-comment">
+            <div class="card-header">
+              <h4>{{comentario.produtoId}}</h4>
+            </div>
+            <div class="card-block">
+              <p>{{comentario.texto}}</p>
+              <cite>{{comentario.autorId}}</cite>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 pagination-links">
+          <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="sections/dirPagination.html"></dir-pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

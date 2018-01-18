@@ -1,0 +1,17 @@
+div(id="wrapper")
+    my-main
+    div.col-md-10.col-md-offset-2(ng-controller="ComentariosController as Comentarios", id="page-content-wrapper")
+        .container-fluid
+            .row
+                .col-md-10.col-md-offset-1
+                    h1.jumbotron.text-center Todos os comentários
+             .row
+                div(id='card-comentario')
+                    .col-md-10.col-md-offset-1.card-comment(dir-paginate="comentario in Comentarios.comentarios | itemsPerPage: 4")
+                        .card-header
+                            h4 {{comentario.produto.id}}
+                        .card-block
+                            p {{comentario.texto}}
+                            cite {{comentario.usuario.id}}
+            .col-md-12.pagination-links
+                dir-pagination-controls(boundary-links="true", on-page-change="pageChangeHandler(newPageNumber)", template-url="sections/dirPagination.html")

@@ -1,0 +1,12 @@
+.col-md-12.Aligner(id="form-box")
+	.modal-dialog.Aligner-item
+		.modal-content
+			.panel-heading
+				h3.panel-title Cadastrar
+			.panel-body
+				form
+					.form-group
+						input.form-control(ng-model="UsuarioCadastro.user.email", placeholder="Email", type="email", autofocus="")
+					.form-group
+						input.form-control(ng-model="UsuarioCadastro.user.senha", placeholder="Senha", type="password")
+					button.btn.btn-primary(ng-click="UsuarioCadastro.cadastro(UsuarioCadastro.user)") Cadastrar

@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#*       		/.*     NotFoundRouter.notFoundPage
+
+# Usuario
+POST 		/usuario/new 										Login.save
+POST 		/login												Login.login
+#DELETE 	/sessao												Login.destroy
+#GET 		/login												Login.login
+
+# Produto
+GET 		/produtos 					                   		Produtos.findAll
+GET 		/produto/{id} 		                  				Produtos.find
+POST 		/produto                                			Produtos.save
+PUT 		/produtos/{id} 										Produtos.update
+DELETE 		/produtos/{id}										Produtos.delete
+GET 		/produtos/{id}										Produtos.findByUsuario
+
+# Comentario
+GET 		/comentarios 										Comentarios.findAll
+POST 		/comentario 										Comentarios.save
+GET 		/comentarios/produto/{id}							Comentarios.findByProduto
+
+
+# ROTA PARA OS ARQUIVOS ESTÁTICOS
+# IMPORTANTE!!! MANTER SEMPRE O BLOCO ABAIXO NO FINAL DO ARQUIVO!
+
+GET     /scripts/                               staticDir:public/scripts
+GET	    /styles/                                staticDir:public/styles
+GET	    /images/                                staticDir:public/images
+GET	    /fonts/	                                staticDir:public/fonts
+GET	    /manual/                                staticDir:public/manual
+GET	    /views/	                                staticDir:public/views
+GET     /tmp/                                   staticDir:tmp
+GET     /public/                                staticDir:public
+GET     /                                       staticDir:public/ 

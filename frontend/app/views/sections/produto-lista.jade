@@ -1,0 +1,30 @@
+div(id="wrapper")
+    my-main
+    div.col-md-10.col-md-offset-2(id="page-content-wrapper")
+        .container-fluid
+            .row
+                .col-md-2.col-xs-6.col-md-offset-1.card(id="card-lista", ng-repeat=" produto in ListarProduto.produtos", ng-class="Main.usuarioLogado ? 'card-lista' : 'card-main'")
+                    .container-img
+                        img(ng-src='{{produto.imagemUrl}}', alt='imagem')
+                    .texto-produto
+                        h4(id="nome-produto") {{produto.nome}}
+                        a.pull-right(ng-href="/produtos/{{produto.id}}/comentarios") 10
+                            i.fa.fa-comments.fa-2x(aria-hidden="true")
+                        hr
+                        p Descrição: {{produto.descricao}}
+                        p Valor: {{produto.valor | currency}}
+                    .main-view(ng-show="Main.usuarioLogado")
+                        p Usuário: {{produto.usuario.id}}
+                        .operacoes.text-center
+                            a(href="#", ng-controller='DeletarProdutoController as DP', ng-click='DP.deletar(produto.id)')
+                                span.fa-stack.fa-2x(id="apagar")
+                                    i.fa.fa-circle.fa-stack-2x
+                                    i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+                            a(href="#", ng-click="ListarProduto.produtoParaEditar(produto.id)")
+                                span.fa-stack.fa-2x(id="editar")
+                                    i.fa.fa-circle.fa-stack-2x
+                                    i.fa.fa-pencil.fa-stack-1x.fa-inverse
+                            a(ng-href="/produtos/{{produto.id}}/comentarios")
+                                span.fa-stack.fa-2x(id="comentar")
+                                    i.fa.fa-circle.fa-stack-2x
+                                    i.fa.fa-comments.fa-stack-1x.fa-inverse

@@ -1,0 +1,29 @@
+div(id="wrapper")
+    my-main
+    div.col-md-10.col-md-offset-2(id="page-content-wrapper")
+        .container-fluid
+            .row
+                .col.md-3.col-md-offset-9
+                    uib(type="CadastrarProduto.alert.type", message="CadastrarProduto.alert.message", dismiss-on-timeout="5000", ng-if="CadastrarProduto.alert")
+                .col-md-4.col-md-offset-4.input-form
+                    .jumbotron
+                        h2.text-center Cadastro de produto
+                    form(name="form", ng-submit='CadastrarProduto.cadastro(CadastrarProduto.form.produto)', novalidate)
+                        .form-group
+                            input.form-control(type="text", ng-model="CadastrarProduto.form.produto.nome", placeholder="Nome", name="nome", required="")
+                            input.form-control(type="text", ng-model="CadastrarProduto.form.produto.valor", placeholder="Valor", name="valor", ui-money-mask, required="")
+                            input.form-control(type="url", ng-model="CadastrarProduto.form.produto.imagemUrl", placeholder="Url da imagem", name="imagemUrl", required="")
+                            textarea.form-control(ng-model="CadastrarProduto.form.produto.descricao", placeholder="Descrição...",  name="descricao", ngMaxLenght="100", required="")
+                        div(ng-hide="form.$pristine")
+                            div(ng-show="form.nome.$touched")
+                                uib-alert(type="danger", ng-if="form.nome.$error.required") Por favor, preencha o nome!
+                            div(ng-show="form.valor.$touched")
+                                uib-alert(type="danger", ng-if="form.valor.$error.required") Por favor, preencha o valor!
+                            div(ng-show="form.imagemUrl.$touched")
+                                uib-alert(type="danger", ng-if="form.imagemUrl.$error.required") Por favor, preencha a url da imagem!
+                                uib-alert(type="danger", ng-if="form.imagemUrl.$error.url") A url inserida não é válida!
+                            div(ng-show="form.descricao.$touched")
+                                uib-alert(type="danger", ng-if="form.descricao.$error.required") Por favor, preencha a descrição!
+                                uib-alert(type="danger", ng-if="form.descricao.$error.maxlength") A descrição deve ter no máximo 100 letras!
+                        .text-center
+                            button.btn.btn-md.btn-success(type='submit', ng-disabled='form.$invalid') Cadastrar

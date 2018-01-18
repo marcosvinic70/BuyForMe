@@ -1,0 +1,10 @@
+div(ng-hide="form.$pristine")
+    div(ng-show="form.nome.$touched")
+        uib-alert(type="danger", ng-if="form.nome.$error.required") Por favor, preencha o nome!
+    div(ng-show="form.valor.$touched")
+        uib-alert(type="danger", ng-if="form.valor.$error.required") Por favor, preencha o valor!
+    div(ng-show="form.imageUrl.$touched")
+        uib-alert(type="danger", ng-if="form.imageUrl.$error.required") Por favor, preencha a url da imagem!
+    div(ng-show="form.descricao.$touched")
+        uib-alert(type="danger", ng-if="form.descricao.$error.required") Por favor, preencha a descrição!
+        uib-alert(type="danger", ng-if="form.descricao.$error.maxlength") A descrição deve ter no máximo 100 letras!

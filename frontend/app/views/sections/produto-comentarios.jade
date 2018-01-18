@@ -1,0 +1,32 @@
+div(id="wrapper")
+    my-main
+    .col-md-10.col-md-offset-2(id="page-content-wrapper")
+        .container-fluid
+            .row(id='row-produto')
+                .col-md-10.col-md-offset-1(id="produto-content", ng-controller="ProdutoGetController as ProdutoGet")
+                    h1.text-center Comentários
+                    hr
+                    .col-md-6(id="imagem-produto")
+                        img.img-responsive(ng-src="{{ProdutoGet.produto.imagemUrl}}")
+                    .col-md-6(id="info-produto")
+                        h3.text-center {{ProdutoGet.produto.nome}}
+                        p Descrição: {{ProdutoGet.produto.descricao}}
+                        p Valor: {{ProdutoGet.produto.valor | currency}}
+                        p Usuário: {{ProdutoGet.produto.usuario.id}}
+                        form.form-group(name="form", ng-submit="ProdutoComentarios.postComentario(ProdutoComentarios.novoComentario)", novalidate)
+                            textarea.form-control(ng-model="ProdutoComentarios.novoComentario", name="comentario", placeholder="Novo comentário...", required="", ngMaxLenght="100")
+                            button.btn.btn-primary.pull-right(type="submit", ng-disabled="form.$invalid", ng-hide="form.$invalid && form.$dirty") Enviar
+                        div(ng-hide="form.$pristine")
+                            div(ng-show="form.comentario.$touched")
+                                uib-alert(type="danger", ng-if="form.comentario.$error.required") Por favor, preencha o campo comentário!
+                                uib-alert(type="danger", ng-if="form.comentario.$error.maxlength") O comentário deve conter no máximo 100 letras!
+            .row
+                div(id='card-comentario')
+                    .col-md-10.col-md-offset-1.card-comment(dir-paginate="comentario in ProdutoComentarios.comentariosProduto | itemsPerPage: 3")
+                        .card-header
+                            h4 {{comentario.produto.id}}
+                        .card-block
+                            p {{comentario.texto}}
+                            cite {{comentario.usuario.id}}
+                .col-md-12.pagination-links
+                    dir-pagination-controls(boundary-links="true", on-page-change="pageChangeHandler(newPageNumber)", template-url="sections/dirPagination.html")

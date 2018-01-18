@@ -1,0 +1,50 @@
+.card-main {
+  height: 375px;
+}
+.card-lista {
+  height: 500px;
+}
+.card {
+  background-color: white;
+  padding: 0;
+  display: inline-block;
+  margin-bottom: 30px;
+  width: 380px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.card img {
+  width: 100%;
+  height: 250px;
+}
+.texto-produto {
+  padding: 10px;
+}
+.main-view {
+  padding: 10px;
+}
+.texto-produto hr {
+  margin: 10px 0;
+}
+.operacoes button {
+  margin: 10px;
+}
+/* BOTOES */
+#apagar.fa-stack {
+  color: #dd4b39;
+}
+#editar.fa-stack {
+  color: #007bb6;
+}
+#comentar.fa-stack {
+  color: #00aced;
+}
+i {
+  transition: all 0.2s ease-in-out;
+}
+i:hover {
+  opacity: .7;
+}

@@ -1,0 +1,14 @@
+.col-md-12.Aligner(id="form-box")
+	.modal-dialog.Aligner-item
+		.modal-content
+			.panel-heading
+				h3.panel-title Entrar
+			.panel-body
+				form(name="form", ng-submit="UsuarioLogin.login(UsuarioLogin.user)", novalidate)
+					.form-group
+						input.form-control(placeholder="Email", ng-model='UsuarioLogin.user.email', name="email", type="email", autofocus="", required="")
+					.form-group
+						input.form-control(placeholder="Senha", ng-model='UsuarioLogin.user.senha', name="senha", type="password", required="")
+					button.btn.btn-success(type="submit") Entrar
+					span.pull-right Ainda não possui cadastro?
+						a(href="/cadastro")  Cadastre-se

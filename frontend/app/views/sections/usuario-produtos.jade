@@ -1,0 +1,26 @@
+div(id="wrapper")
+    my-main
+    div.col-md-10.col-md-offset-2(ng-controller="ListarProdutoController as ListarProduto", id="page-content-wrapper")
+         .container-fluid
+            .row
+                .col-md-10.col-md-offset-1
+                    h1.jumbotron.text-center Meus Produtos
+            .row(id="busca-row")
+                .col-md-6.col-md-offset-1.input-form
+                    input.form-control(id="busca", ng-model="busca", placeholder="Digite aqui o a informação do produto que deseja buscar")
+                .col-md-4.col(id="selects")
+                    label(for="ordenacao") Ordenar por:
+                    select(name="predicate", ng-model="ListarProduto.predicate")
+                        option(value="nome") Nome
+                        option(value="valor") Valor
+                    select(name="reverse", ng-model="ListarProduto.reverse")
+                        option(value=false) Ascendente
+                        option(value=true) Descendente
+             .row
+                .col-md-2.col-xs-6.col-md-offset-1.card(id="card-main", ng-repeat="(key, produto) in UsuarioProdutos.produtos")
+                    .container-img
+                        img(ng-src='{{produto.imagemUrl}}', alt='Card image cap')
+                    .texto-produto
+                        h4 {{produto.nome}}
+                        hr
+                        p Valor: {{produto.valor | currency}}
