@@ -12,7 +12,7 @@
             <h3 class="text-center">{{ProdutoGet.produto.nome}}</h3>
             <p>Descrição: {{ProdutoGet.produto.descricao}}</p>
             <p>Valor: {{ProdutoGet.produto.valor | currency}}</p>
-            <p>Usuário: {{ProdutoGet.produto.usuario.id}}</p>
+            <p>Usuário: {{ProdutoGet.produto.usuario.nome}}</p>
             <form name="form" ng-submit="ProdutoComentarios.postComentario(ProdutoComentarios.novoComentario)" novalidate="novalidate" class="form-group">
               <textarea ng-model="ProdutoComentarios.novoComentario" name="comentario" placeholder="Novo comentário..." required="" ngMaxLenght="100" class="form-control"></textarea>
               <button type="submit" ng-disabled="form.$invalid" ng-hide="form.$invalid &amp;&amp; form.$dirty" class="btn btn-primary pull-right">Enviar</button>
@@ -30,11 +30,11 @@
         <div id="card-comentario">
           <div dir-paginate="comentario in ProdutoComentarios.comentariosProduto | itemsPerPage: 3" class="col-md-10 col-md-offset-1 card-comment">
             <div class="card-header">
-              <h4>{{comentario.produto.id}}</h4>
+              <h4>{{comentario.produto.nome}}</h4>
             </div>
             <div class="card-block">
               <p>{{comentario.texto}}</p>
-              <cite>{{comentario.usuario.id}}</cite>
+              <cite>{{comentario.usuario.nome}}</cite>
             </div>
           </div>
         </div>

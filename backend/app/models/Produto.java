@@ -51,4 +51,8 @@ public class Produto extends GenericModel {
 		
 	}
 
+	public Long getQtdeComentarios() {
+		return(Comentario.count("produto.id = ?", this.id));
+	}
+	
 }

@@ -12,7 +12,7 @@ div(id="wrapper")
                         h3.text-center {{ProdutoGet.produto.nome}}
                         p Descrição: {{ProdutoGet.produto.descricao}}
                         p Valor: {{ProdutoGet.produto.valor | currency}}
-                        p Usuário: {{ProdutoGet.produto.usuario.id}}
+                        p Usuário: {{ProdutoGet.produto.usuario.nome}}
                         form.form-group(name="form", ng-submit="ProdutoComentarios.postComentario(ProdutoComentarios.novoComentario)", novalidate)
                             textarea.form-control(ng-model="ProdutoComentarios.novoComentario", name="comentario", placeholder="Novo comentário...", required="", ngMaxLenght="100")
                             button.btn.btn-primary.pull-right(type="submit", ng-disabled="form.$invalid", ng-hide="form.$invalid && form.$dirty") Enviar
@@ -24,9 +24,9 @@ div(id="wrapper")
                 div(id='card-comentario')
                     .col-md-10.col-md-offset-1.card-comment(dir-paginate="comentario in ProdutoComentarios.comentariosProduto | itemsPerPage: 3")
                         .card-header
-                            h4 {{comentario.produto.id}}
+                            h4 {{comentario.produto.nome}}
                         .card-block
                             p {{comentario.texto}}
-                            cite {{comentario.usuario.id}}
+                            cite {{comentario.usuario.nome}}
                 .col-md-12.pagination-links
                     dir-pagination-controls(boundary-links="true", on-page-change="pageChangeHandler(newPageNumber)", template-url="sections/dirPagination.html")

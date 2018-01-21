@@ -4,6 +4,8 @@
 @import 'variables';
 @import 'mixins';
 
+@import 'toasts';
+
 html,
 body {
   &.swal2-shown {
@@ -18,117 +20,6 @@ body {
 }
 
 body {
-  &.swal2-toast-shown {
-    &.swal2-has-input  > .swal2-container {
-      & > .swal2-toast {
-        flex-direction: column;
-
-        .swal2-icon {
-          margin: 0 0 15px;
-        }
-
-        .swal2-actions {
-          flex: 1;
-          align-self: stretch;
-          justify-content: flex-end;
-        }
-
-        .swal2-loading {
-          justify-content: center;
-        }
-
-        .swal2-input {
-          height: 32px;
-          font-size: 14px;
-          margin: 5px auto;
-        }
-      }
-    }
-
-    & > .swal2-container {
-      position: fixed;
-      background-color: transparent;
-
-      &.swal2-shown {
-        background-color: transparent;
-      }
-
-      &.swal2-top {
-        top: 0;
-        left: 50%;
-        bottom: auto;
-        right: auto;
-        transform: translateX(-50%);
-      }
-
-      &.swal2-top-end,
-      &.swal2-top-right {
-        top: 0;
-        left: auto;
-        bottom: auto;
-        right: 0;
-      }
-
-      &.swal2-top-start,
-      &.swal2-top-left {
-        top: 0;
-        left: 0;
-        bottom: auto;
-        right: auto;
-      }
-
-      &.swal2-center-start,
-      &.swal2-center-left {
-        top: 50%;
-        left: 0;
-        bottom: auto;
-        right: auto;
-        transform: translateY(-50%);
-      }
-
-      &.swal2-center {
-        top: 50%;
-        left: 50%;
-        bottom: auto;
-        right: auto;
-        transform: translate(-50%, -50%);
-      }
-
-      &.swal2-center-end,
-      &.swal2-center-right {
-        top: 50%;
-        left: auto;
-        bottom: auto;
-        right: 0;
-        transform: translateY(-50%);
-      }
-
-      &.swal2-bottom-start,
-      &.swal2-bottom-left {
-        top: auto;
-        left: 0;
-        bottom: 0;
-        right: auto;
-      }
-
-      &.swal2-bottom {
-        top: auto;
-        left: 50%;
-        bottom: 0;
-        right: auto;
-        transform: translateX(-50%);
-      }
-
-      &.swal2-bottom-end,
-      &.swal2-bottom-right {
-        top: auto;
-        left: auto;
-        bottom: 0;
-        right: 0;
-      }
-    }
-  }
-
   &.swal2-iosfix {
     position: fixed;
     left: 0;
@@ -363,154 +254,17 @@ body {
   flex-direction: column;
   background-color: $swal2-white;
   font-family: $swal2-font;
-  border-radius: 5px;
+  font-size: $swal2-font-size;
+  padding: $swal2-padding;
+  border-radius: .3125em;
   box-sizing: border-box;
-  text-align: center;
+  justify-content: center;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
   position: relative;
+  width: $swal2-width;
   max-width: 100%;
-
-  &.swal2-toast {
-    width: 300px;
-    padding: 0 15px;
-    flex-direction: row;
-    align-items: center;
-    overflow-y: hidden;
-    box-shadow: 0 0 10px $swal2-box-shadow;
-
-    .swal2-title {
-      max-width: 300px;
-      font-size: 16px;
-      text-align: left;
-    }
-
-    .swal2-content {
-      font-size: 14px;
-      text-align: left;
-    }
-
-    .swal2-icon {
-      width: 32px;
-      min-width: 32px;
-      height: 32px;
-      margin: 0 15px 0 0;
-
-      &.swal2-success {
-
-        .swal2-success-ring {
-          width: 32px;
-          height: 32px;
-        }
-      }
-
-      &.swal2-info,
-      &.swal2-warning,
-      &.swal2-question {
-        font-size: 26px;
-        line-height: 32px;
-      }
-
-      &.swal2-error {
-
-        [class^='swal2-x-mark-line'] {
-          top: 14px;
-          width: 22px;
-
-          &[class$='left'] {
-            left: 5px;
-          }
-
-          &[class$='right'] {
-            right: 5px;
-          }
-        }
-      }
-    }
-
-    .swal2-actions {
-      margin: 0 0 0 5px;
-    }
-
-    .swal2-styled {
-      margin: 0 0 0 5px;
-      padding: 5px 10px;
-
-      &:focus {
-        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
-      }
-    }
-
-    .swal2-validationerror {
-      width: 100%;
-      margin: 5px -20px;
-    }
-
-    .swal2-success {
-      border-color: $swal2-success;
-
-      [class^='swal2-success-circular-line'] { // Emulate moving circular line
-        border-radius: 50%;
-        position: absolute;
-        width: 32px;
-        height: 64px;
-        transform: rotate(45deg);
-
-        &[class$='left'] {
-          border-radius: 64px 0 0 64px;
-          top: -4px;
-          left: -15px;
-
-          transform: rotate(-45deg);
-          transform-origin: 32px 32px;
-        }
-
-        &[class$='right'] {
-          border-radius: 0 64px 64px 0;
-          top: -5px;
-          left: 14px;
-          transform-origin: 0 32px;
-        }
-      }
-
-      .swal2-success-ring {
-        width: 32px;
-        height: 32px;
-      }
-
-      .swal2-success-fix {
-        width: 7px;
-        height: 90px;
-        left: 28px;
-        top: 8px;
-      }
-
-      [class^='swal2-success-line'] {
-        height: 5px;
-
-        &[class$='tip'] {
-          width: 12px;
-          left: 3px;
-          top: 18px;
-        }
-
-        &[class$='long'] {
-          width: 22px;
-          right: 3px;
-          top: 15px;
-        }
-      }
-    }
-
-    .swal2-animate-success-line-tip {
-      animation: animate-toast-success-tip .75s;
-    }
-
-    .swal2-animate-success-line-long {
-      animation: animate-toast-success-long .75s;
-    }
-  }
 
   &:focus {
     outline: none;
@@ -523,11 +277,12 @@ body {
   .swal2-header {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .swal2-title {
     color: lighten($swal2-black, 35);
-    font-size: 30px;
+    font-size: $swal2-title-font-size;
     text-align: center;
     font-weight: 600;
     text-transform: none;
@@ -539,9 +294,9 @@ body {
   }
 
   .swal2-actions {
-    align-items: center;
+    height: $swal2-actions-height;
+    align-items: flex-end;
     justify-content: center;
-    margin-top: 15px;
 
     &:not(.swal2-loading) {
       .swal2-styled {
@@ -556,13 +311,12 @@ body {
       .swal2-styled {
         &.swal2-confirm {
           box-sizing: border-box;
-          border: 4px solid transparent;
+          border: .25em solid transparent;
           border-color: transparent;
-          width: 40px;
-          height: 40px;
+          width: 2.5em;
+          height: 2.5em;
           padding: 0;
-          margin: 7.5px;
-          vertical-align: top;
+          margin: .46875em;
           background-color: transparent !important;
           color: transparent;
           cursor: default;
@@ -583,7 +337,6 @@ body {
             display: inline-block;
             content: '';
             margin-left: 5px;
-            vertical-align: -1px;
             height: 15px;
             width: 15px;
             border: 3px solid lighten($swal2-black, 60);
@@ -599,23 +352,27 @@ body {
 
   .swal2-styled {
     border: 0;
-    border-radius: 3px;
+    border-radius: .25em;
     box-shadow: none;
     color: $swal2-white;
     cursor: pointer;
-    font-size: 17px;
+    font-size: $swal2-buttons-font-size;
     font-weight: 500;
-    margin: 15px 5px 0;
-    padding: 10px 32px;
+    margin: 0 .3125em;
+    padding: .625em 2em;
 
     &:focus {
       outline: none;
       box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-focus-outline;
     }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
   }
 
   .swal2-image {
-    margin: 20px auto;
+    margin: 1.25em auto;
     max-width: 100%;
   }
 
@@ -624,10 +381,13 @@ body {
     border: 0;
     margin: 0;
     padding: 0;
-    width: 38px;
-    height: 40px;
-    font-size: 36px;
-    line-height: 40px;
+    width: 1.2em;
+    min-width: 1.2em;
+    height: 1.2em;
+    // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
+    font-size: calc(#{$swal2-close-button-size} - #{$swal2-close-button-size*.1});
+    line-height: 1.2em;
+    justify-content: center;
     font-family: serif;
     position: absolute;
     top: 5px;
@@ -651,16 +411,18 @@ body {
   }
 
   .swal2-content {
-    font-size: 18px;
-    text-align: center;
+    font-size: $swal2-content-font-size;
+    justify-content: center;
     font-weight: 300;
-    position: relative;
-    float: none;
     margin: 0;
     padding: 0;
     line-height: normal;
     color: lighten($swal2-black, 33);
     word-wrap: break-word;
+  }
+
+  #swal2-content {
+    text-align: center;
   }
 
   .swal2-input,
@@ -669,7 +431,7 @@ body {
   .swal2-select,
   .swal2-radio,
   .swal2-checkbox {
-    margin: 20px auto;
+    margin: 1em auto;
   }
 
   .swal2-input,
@@ -677,7 +439,7 @@ body {
   .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: $swal2-input-font-size;
     border-radius: 3px;
     border: 1px solid $swal2-input-border;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
@@ -701,103 +463,89 @@ body {
 
   .swal2-range {
     input {
-      float: left;
       width: 80%;
     }
 
     output {
-      float: right;
       width: 20%;
-      font-size: 20px;
       font-weight: 600;
       text-align: center;
     }
 
     input,
     output {
-      height: 43px;
-      line-height: 43px;
-      vertical-align: middle;
-      margin: 20px auto;
+      font-size: $swal2-input-font-size;
+      height: 2.625em;
+      line-height: 2.625em;
+      margin: 1em auto;
       padding: 0;
     }
   }
 
   .swal2-input {
-    height: 43px;
-    padding: 0 12px;
+    height: 2.625em;
+    padding: 0 .75em;
 
     &[type='number'] {
-      max-width: 150px;
+      max-width: 10em;
     }
   }
 
   .swal2-file {
-    font-size: 20px;
+    font-size: $swal2-input-font-size;
   }
 
   .swal2-textarea {
-    height: 108px;
-    padding: 12px;
+    height: 6.75em;
+    padding: .75em;
   }
 
   .swal2-select {
     color: lighten($swal2-black, 33);
-    font-size: inherit;
-    padding: 5px 10px;
-    min-width: 40%;
+    font-size: $swal2-input-font-size;
+    padding: .375em .625em;
+    min-width: 50%;
     max-width: 100%;
   }
 
-  .swal2-radio {
-    border: 0;
+  .swal2-radio,
+  .swal2-checkbox {
+    justify-content: center;
+    align-items: center;
 
     label {
-      &:not(:first-child) {
-        margin-left: 20px;
-      }
-    }
-
-    input,
-    span {
-      vertical-align: middle;
+      font-size: $swal2-input-font-size;
+      margin: 0 .6em;
     }
 
     input {
-      margin: 0 3px 0 0;
-    }
-  }
-
-  .swal2-checkbox {
-    color: lighten($swal2-black, 33);
-
-    input,
-    span {
-      vertical-align: middle;
+      margin: 0 .4em;
     }
   }
 
   .swal2-validationerror {
+    align-items: center;
+    justify-content: center;
     background-color: lighten($swal2-black, 94);
-    margin: 0 -20px;
     overflow: hidden;
-    padding: 10px;
+    padding: .625em;
     color: lighten($swal2-black, 50);
-    font-size: 16px;
+    font-size: $swal2-validation-font-size;
     font-weight: 300;
     display: none;
 
     &::before {
       content: '!';
       display: inline-block;
-      width: 24px;
-      height: 24px;
+      width: 1.5em;
+      height: 1.5em;
       border-radius: 50%;
       background-color: $swal2-validationerror-background;
       color: $swal2-validationerror-color;
-      line-height: 24px;
+      line-height: 1.5em;
+      font-weight: 600;
       text-align: center;
-      margin-right: 10px;
+      margin: 0 .625em;
     }
   }
 }
@@ -829,10 +577,11 @@ body {
 .swal2-icon {
   width: 80px;
   height: 80px;
+  line-height: 80px;
   border: 4px solid transparent;
   border-radius: 50%;
-  margin: 20px auto 30px;
-  padding: 0;
+  margin: 1.25em auto 1.875em;
+  justify-content: center;
   position: relative;
   box-sizing: content-box;
   cursor: default;
@@ -843,7 +592,7 @@ body {
 
     .swal2-x-mark {
       position: relative;
-      display: block;
+      flex-grow: 1;
     }
 
     [class^='swal2-x-mark-line'] {
@@ -867,31 +616,27 @@ body {
     }
   }
 
-  &.swal2-warning {
+  &.swal2-warning,
+  &.swal2-info,
+  &.swal2-question {
     font-family: $swal2-font;
+    font-size: 3.75em;
+    margin: .333333em auto .5em;
+  }
+
+  &.swal2-warning {
     color: $swal2-warning;
     border-color: lighten($swal2-warning, 7);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-info {
-    font-family: $swal2-font;
     color: $swal2-info;
     border-color: lighten($swal2-info, 20);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-question {
-    font-family: $swal2-font;
     color: $swal2-question;
     border-color: lighten($swal2-question, 20);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-success {
@@ -941,7 +686,7 @@ body {
       height: 90px;
 
       position: absolute;
-      left: 28px;
+      left: 26px;
       top: 8px;
       z-index: 1;
 
@@ -983,8 +728,9 @@ body {
   $blue: #3085d6;
 
   font-weight: 600;
-  margin: 0 0 20px;
   padding: 0;
+  margin: 0 0 1.25em;
+  align-items: center;
 
   li {
     display: inline-block;
@@ -1025,6 +771,7 @@ body {
   .swal2-progressline {
     background: $blue;
     height: .4em;
+    width: $swal2-progress-steps-distance;
     margin: 0 -1px;
     z-index: 10;
   }
@@ -1034,44 +781,6 @@ body {
 // github.com/sweetalert2/sweetalert2/issues/268
 [class^='swal2'] {
   -webkit-tap-highlight-color: $swal2-transparent;
-}
-
-// Toast Animations
-@keyframes showSweetToast {
-  0% {
-    transform: translateY(-10px) rotateZ(2deg);
-    opacity: 0;
-  }
-
-  33% {
-    transform: translateY(0) rotateZ(-2deg);
-    opacity: .5;
-  }
-
-  66% {
-    transform: translateY(5px) rotateZ(2deg);
-    opacity: .7;
-  }
-
-  100% {
-    transform: translateY(0) rotateZ(0);
-    opacity: 1;
-  }
-}
-
-@keyframes hideSweetToast {
-  0% {
-    opacity: 1;
-  }
-
-  33% {
-    opacity: .5;
-  }
-
-  100% {
-    transform: rotateZ(1deg);
-    opacity: 0;
-  }
 }
 
 // Modal animations
@@ -1108,10 +817,6 @@ body {
 .swal2-show {
   animation: showSweetAlert .3s;
 
-  &.swal2-toast {
-    animation: showSweetToast .5s;
-  }
-
   &.swal2-noanimation {
     animation: none;
   }
@@ -1119,10 +824,6 @@ body {
 
 .swal2-hide {
   animation: hideSweetAlert .15s forwards;
-
-  &.swal2-toast {
-    animation: hideSweetToast .2s forwards;
-  }
 
   &.swal2-noanimation {
     animation: none;
@@ -1150,14 +851,14 @@ body {
 
   54% {
     width: 0;
-    left: 1px;
-    top: 19px;
+    left: 2px;
+    top: 17px;
   }
 
   70% {
     width: 50px;
-    left: -8px;
-    top: 37px;
+    left: -6px;
+    top: 35px;
   }
 
   84% {
@@ -1196,64 +897,6 @@ body {
     width: 47px;
     right: 8px;
     top: 38px;
-  }
-}
-
-@keyframes animate-toast-success-tip {
-  0% {
-    width: 0;
-    left: 1px;
-    top: 9px;
-  }
-
-  54% {
-    width: 0;
-    left: 1px;
-    top: 9px;
-  }
-
-  70% {
-    width: 24px;
-    left: -4px;
-    top: 17px;
-  }
-
-  84% {
-    width: 8px;
-    left: 10px;
-    top: 20px;
-  }
-
-  100% {
-    width: 12px;
-    left: 3px;
-    top: 18px;
-  }
-}
-
-@keyframes animate-toast-success-long {
-  0% {
-    width: 0;
-    right: 22px;
-    top: 26px;
-  }
-
-  65% {
-    width: 0;
-    right: 22px;
-    top: 26px;
-  }
-
-  84% {
-    width: 26px;
-    right: 0;
-    top: 15px;
-  }
-
-  100% {
-    width: 22px;
-    right: 3px;
-    top: 15px;
   }
 }
 

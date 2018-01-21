@@ -17,7 +17,9 @@ public class ComentarioSerializer {
 					.include(
 						"texto",
 						"usuario.id",
-						"produto.id"
+						"usuario.nome",
+						"produto.id",
+						"produto.nome"
 					)
 					.exclude("*")
 					.transform(DateSerializer.getTransformer(), Date.class)

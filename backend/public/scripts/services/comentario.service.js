@@ -15,15 +15,12 @@
 
         function getComentariosProduto(idProduto) {
 
-            //var url = baseUrl + 'comentarios.json?orderBy="produtoId"&equalTo="' + idProduto + '"';
             var url = 'comentarios/produto/' + idProduto;
 
             return $http.get(url);
         }
 
         function postComentario(idProduto, comentario) {
-
-            //var url = baseUrl + 'comentarios.json?auth=' + storage.getUserData().idToken;
 
             var usuario = storage.getUserData();
 

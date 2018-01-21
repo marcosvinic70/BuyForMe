@@ -20,8 +20,9 @@ public class ProdutoSerializer {
 					"descricao",
 					"valor",
 					"imagemUrl",
-					"usuario.id"/*,
-					"tempoDeExpiracao"*/
+					"usuario.id",
+					"usuario.nome",
+					"qtdeComentarios"
 				)
 				.exclude("*")
 				.transform(DateSerializer.getTransformer(), Date.class)

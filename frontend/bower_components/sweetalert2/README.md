@@ -164,8 +164,8 @@ Configuration
 | `toast`                  | `false`               | Whether or not an alert should be treated as a toast notification. This option is normally coupled with the `position` parameter and a timer. Toasts are NEVER autofocused.
 | `target`                 | `'body'`              | The container element for adding modal into. |
 | `input`                  | `null`                | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
-| `width`                  | `'500px'`             | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
-| `padding`                | `20`                  | Modal window padding. |
+| `width`                  | `null`                | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. The default width is `32em`. |
+| `padding`                | `null`                | Modal window padding. The default padding is `1.25em`. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
 | `position`               | `'center'`            | Modal window position, can be `'top'`, `'top-start'`, `'top-end'`, `'center'`, `'center-start'`, `'center-end'`, `'bottom'`, `'bottom-start'`, or `'bottom-end'`. |
 | `grow`                   | `false`               | Paired with window position, sets the direction the modal should grow in, can be set to `'row'`, `'column'`, `'fullscreen'`, or `false`. |
@@ -173,8 +173,8 @@ Configuration
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |
 | `allowOutsideClick`      | `true`                | If set to `false`, the user can't dismiss the modal by clicking outside it. You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal. |
-| `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
-| `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
+| `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. You can also pass a custom function returning a boolean value, e.g. if you want to disable the escape key for the loading state of a modal. |
+| `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. You can also pass a custom function returning a boolean value. |
 | `showConfirmButton`      | `true`                | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
 | `showCancelButton`       | `false`               | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
 | `confirmButtonText`      | `'OK'`                | Use this to change the text on the "Confirm"-button. |
@@ -207,7 +207,7 @@ Configuration
 | `inputClass`             | `null`                | A custom CSS class for the input field. |
 | `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://sweetalert2.github.io/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
-| `progressStepsDistance`  | `'40px'`              | Distance between progress steps. |
+| `progressStepsDistance`  | `null`                | Distance between progress steps. The default distance is `2.5em`. |
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
@@ -291,14 +291,12 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 4. Start gulp watcher `gulp watch` to automatically serve, build, and minify the SCSS and JS-files.
 
-5. Check that your code is compliant with code linters: `gulp lint`.
-
-6. Ensure that you didn't break any of tests:
+5. Ensure that you didn't break any of tests:
 
   - in browser: http://localhost:8080/test/qunit/
   - via CLI: `npm test`
 
-7. Make sure that `dist/*` files aren't committed and create a pull request.
+6. Make sure that `dist/*` files aren't committed and create a pull request.
 
 
 Related projects
@@ -323,3 +321,5 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 
 - https://www.paypal.me/limonte/5eur
 - https://www.patreon.com/limonte
+
+### [Hall of Donators :trophy:](DONATIONS.md)

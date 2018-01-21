@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance, warn, error, warnOnce } from './utils/utils.js'
+import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -56,11 +56,15 @@ const setParameters = (params) => {
   }
 
   // Set popup width
-  let popupWidth = (params.width === defaultParams.width && params.toast) ? 'auto' : params.width
-  popup.style.width = (typeof popupWidth === 'number') ? popupWidth + 'px' : popupWidth
+  if (params.width) {
+    popup.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width
+  }
 
-  let popupPadding = (params.padding === defaultParams.padding && params.toast) ? 'inherit' : params.padding
-  popup.style.padding = (typeof popupPadding === 'number') ? popupPadding + 'px' : popupPadding
+  // Set popup padding
+  if (params.padding) {
+    popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
+  }
+
   popup.style.background = params.background
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
   for (let i = 0; i < successIconParts.length; i++) {
@@ -165,7 +169,9 @@ const setParameters = (params) => {
       if (index !== params.progressSteps.length - 1) {
         let line = document.createElement('li')
         dom.addClass(line, swalClasses.progressline)
-        line.style.width = params.progressStepsDistance
+        if (params.progressStepsDistance) {
+          line.style.width = params.progressStepsDistance
+        }
         progressStepsContainer.appendChild(line)
       }
     })
@@ -724,14 +730,8 @@ const sweetAlert = (...args) => {
         if (e.target !== container) {
           return
         }
-        if (params.allowOutsideClick) {
-          if (typeof params.allowOutsideClick === 'function') {
-            if (params.allowOutsideClick()) {
-              dismissWith('overlay')
-            }
-          } else {
-            dismissWith('overlay')
-          }
+        if (callIfFunction(params.allowOutsideClick)) {
+          dismissWith('overlay')
         }
       }
     }
@@ -824,7 +824,7 @@ const sweetAlert = (...args) => {
         }
 
       // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
         dismissWith('esc')
       }
     }
@@ -927,6 +927,9 @@ const sweetAlert = (...args) => {
     sweetAlert.showValidationError = (error) => {
       const validationError = dom.getValidationError()
       validationError.innerHTML = error
+      const popupComputedStyle = window.getComputedStyle(popup)
+      validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
+      validationError.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
       dom.show(validationError)
 
       const input = getInput()
@@ -1135,7 +1138,7 @@ const sweetAlert = (...args) => {
     openPopup(params.animation, params.onBeforeOpen, params.onOpen)
 
     if (!params.toast) {
-      if (!params.allowEnterKey) {
+      if (!callIfFunction(params.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur()
         }

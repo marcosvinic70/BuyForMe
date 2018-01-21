@@ -35,6 +35,8 @@ public class Usuario extends GenericModel {
 	@Column(name = "senha")
 	public String senha;
 	
+	public String nome;
+	
 	//public final int tempoDeExpiracao = 3600;
 	
 }

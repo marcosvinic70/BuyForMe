@@ -8,13 +8,13 @@ div(id="wrapper")
                         img(ng-src='{{produto.imagemUrl}}', alt='imagem')
                     .texto-produto
                         h4(id="nome-produto") {{produto.nome}}
-                        a.pull-right(ng-href="/produtos/{{produto.id}}/comentarios") 10
+                        a.pull-right(ng-href="/produtos/{{produto.id}}/comentarios") {{produto.qtdeComentarios}}
                             i.fa.fa-comments.fa-2x(aria-hidden="true")
                         hr
                         p Descrição: {{produto.descricao}}
                         p Valor: {{produto.valor | currency}}
                     .main-view(ng-show="Main.usuarioLogado")
-                        p Usuário: {{produto.usuario.id}}
+                        p Usuário: {{produto.usuario.nome}}
                         .operacoes.text-center
                             a(href="#", ng-controller='DeletarProdutoController as DP', ng-click='DP.deletar(produto.id)')
                                 span.fa-stack.fa-2x(id="apagar")
