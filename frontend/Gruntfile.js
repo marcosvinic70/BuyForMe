@@ -145,7 +145,8 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: 'bower_components/',
 					src: [
-						'sweetalert2/dist/sweetalert2.css'
+						'sweetalert2/dist/sweetalert2.css',
+						'font-awesome/css/font-awesome.min.css'
 					],
 					dest: '<%= config.dist %>/styles'
 				},
@@ -290,7 +291,8 @@ module.exports = function(grunt) {
 						flatten: true,
 						cwd: 'bower_components/',
 						src: [
-							'sweetalert/src/css/*.css'
+							'sweetalert/src/css/*.css',
+							'font-awesome/css/font-awesome.min.css'
 						],
 						dest: '<%= config.dist %>/styles/css'
 					},

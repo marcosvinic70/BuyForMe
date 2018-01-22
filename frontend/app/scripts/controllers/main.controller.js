@@ -28,17 +28,10 @@
                         title: 'Deseja entrar?',
                         text: "Para continuar é necessário estar logado.",
                         type: 'warning',
-                        showCancelButton: true,
                         confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim',
-                        cancelButtonText: 'Não',
+                        confirmButtonText: 'Ok',
                     }).then(function () {
-/*
-                        if (response  == 'confirm') {
-                            $location.path('/login');
-                        }
-*/
+
                     }, function() {
 
                     });

@@ -11,13 +11,13 @@
 			function cadastro(user) {
 
 				var json = {
+					nome: user.nome,
 					email: user.email,
 					senha: user.senha,
 					returnSecureToken: true
 				};
 
 				var url = 'usuario/new';
-					//'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=';
 
 				return $http.post(url, json);
 			}
@@ -31,7 +31,6 @@
 				};
 
 				var url = 'login';
-					//'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=';
 
 				return $http.post(url, json);
 			}

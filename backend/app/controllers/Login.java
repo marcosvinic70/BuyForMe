@@ -22,7 +22,7 @@ public class Login extends BaseController {
 			String token = session.getAuthenticityToken();
 			String sessao = Crypto.encryptAES(token);
 			
-			Autenticacao resposta = new Autenticacao(usuario.id, usuario.email, sessao);
+			Autenticacao resposta = new Autenticacao(usuario.id, usuario.email, usuario.nome, sessao);
 			renderJSON(resposta);	
 		} else {
 			erro401("Login ou senha inválidos! Tente novamente.");

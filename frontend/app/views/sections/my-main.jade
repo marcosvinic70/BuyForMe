@@ -3,7 +3,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top(id='navbar')
         ul.nav.navbar-nav.navbar-right
             li
                 a(href, ng-show='Main.usuarioLogado')
-                    span Email: {{Main.usuarioLogado.email}}
+                    span {{Main.usuarioLogado.nome}}
             li
                 a(href='/login', ng-show='Main.usuarioLogado', ng-click='Main.logout()')
                     span Logout
