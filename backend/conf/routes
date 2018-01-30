@@ -27,12 +27,12 @@ GET 		/comentarios/produto/{id}							Comentarios.findByProduto
 # ROTA PARA OS ARQUIVOS ESTÁTICOS
 # IMPORTANTE!!! MANTER SEMPRE O BLOCO ABAIXO NO FINAL DO ARQUIVO!
 
-GET     /tmp/                                    staticDir:tmp
-GET     /scripts/                                staticDir:public/scripts
-GET     /styles/                                 staticDir:public/styles
-GET     /images/                                 staticDir:public/images
-GET     /fonts/                                  staticDir:public/fonts
-GET     /manual/                                 staticDir:public/manual
-GET     /views/                                  staticDir:public/views
-GET     /public/                                 staticDir:public
-GET     /                                        staticDir:public/views
+GET     /scripts/                               staticDir:public/scripts
+GET	    /styles/                                staticDir:public/styles
+GET	    /images/                                staticDir:public/images
+GET	    /fonts/	                                staticDir:public/fonts
+GET	    /manual/                                staticDir:public/manual
+GET	    /views/	                                staticDir:public/views
+GET     /tmp/                                   staticDir:tmp
+GET     /public/                                staticDir:public
+GET     /                                       staticDir:public
